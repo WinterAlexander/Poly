@@ -12,6 +12,7 @@
 #include <sstream>
 #include <algorithm>
 #include "template_util.h"
+#include "term.h"
 
 namespace poly {
     class polynomial;
@@ -27,20 +28,18 @@ namespace poly {
 
 class poly::polynomial final
 {
-    std::vector<float> terms;
+    std::vector<poly::term> terms;
 
 public:
-    template<class... U> //not bound to float so auto cast can occur
-    polynomial(U... terms)
-            : terms { terms... }
-    {
-        std::reverse(this->terms.begin(), this->terms.end());
-        remove_null_terms();
-    }
+    polynomial(poly::term singleTerm);
+    polynomial(std::initializer_list<float> terms);
+    polynomial(std::initializer_list<poly::term> terms);
+
+    polynomial(const std::vector<term>& terms);
 
     std::string to_string() const;
 
-    size_t degree() const;
+    std::size_t degree() const;
 
     polynomial operator-() const;
 
