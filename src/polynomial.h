@@ -40,12 +40,10 @@ public:
     std::string to_string() const;
 
     degree_t degree() const;
+    const poly::term& highest() const;
+    bool is_single() const;
 
     poly::term operator[](degree_t index) const;
-
-    const poly::term& highest() const;
-
-    polynomial operator-() const;
 
     inline polynomial& operator+=(const polynomial& addend) {
         return *this = *this + addend;
@@ -65,7 +63,8 @@ public:
 
     bool operator==(const polynomial& rhs) const;
     bool operator!=(const polynomial& rhs) const;
-    
+
+    polynomial operator-() const;
     friend polynomial operator+(const polynomial& augend, const polynomial& addend);
     friend polynomial operator-(const polynomial& minuend, const polynomial& subtrahend);
     friend polynomial operator*(const polynomial& multiplicand, const polynomial& multiplier);

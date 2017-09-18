@@ -13,6 +13,7 @@
 namespace poly {
     class term;
     class polynomial;
+    std::ostream& operator<<(std::ostream& os, const term& term);
 
     polynomial operator+(const term& first, const term& second);
     polynomial operator-(const term& first, const term& second);
@@ -20,7 +21,7 @@ namespace poly {
     term operator/(const term& first, const term& second);
 }
 
-class poly::term
+class poly::term final
 {
     value_t _value = 0;
     degree_t _degree = 0;

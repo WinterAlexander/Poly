@@ -97,3 +97,9 @@ poly::term poly::operator/(const poly::term& first, const poly::term& second)
 {
     return poly::term(first._value / second._value, first._degree - second._degree);
 }
+
+std::ostream& ::poly::operator<<(std::ostream& os, const poly::term& term)
+{
+    os << term.to_string();
+    return os;
+}

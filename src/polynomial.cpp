@@ -53,19 +53,27 @@ void poly::polynomial::remove_null_terms()
         terms.pop_back();
 }
 
-poly::polynomial poly::polynomial::operator-() const
-{
-    polynomial other(*this);
-
-    for(poly::term& term : other.terms)
-        term = -term;
-
-    return other;
-}
 
 int poly::polynomial::degree() const
 {
     return static_cast<degree_t>(terms.size()) - 1; //assumes vector is cleaned up
+}
+
+const poly::term& poly::polynomial::highest() const
+{
+    return terms[degree()];
+}
+
+bool poly::polynomial::is_single() const
+{
+    int count = 0;
+
+    for(term term : terms)
+        if(term.value() != 0)
+            if(++count > 1)
+                return false;
+
+    return true;
 }
 
 poly::term poly::polynomial::operator[](poly::degree_t index) const
@@ -76,9 +84,14 @@ poly::term poly::polynomial::operator[](poly::degree_t index) const
     return terms[index];
 }
 
-const poly::term& poly::polynomial::highest() const
+poly::polynomial poly::polynomial::operator-() const
 {
-    return terms[degree()];
+    polynomial other(*this);
+
+    for(poly::term& term : other.terms)
+        term = -term;
+
+    return other;
 }
 
 poly::polynomial poly::operator+(const poly::polynomial& first, const poly::polynomial& second)
