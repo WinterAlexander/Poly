@@ -20,6 +20,9 @@ namespace poly {
 
     polynomial operator+(const polynomial& first, const polynomial& second);
     polynomial operator-(const polynomial& first, const polynomial& second);
+    polynomial operator*(const polynomial& first, const polynomial& second);
+    polynomial operator/(const polynomial& first, const polynomial& second);
+    polynomial operator%(const polynomial& first, const polynomial& second);
 }
 
 class poly::polynomial final
@@ -48,6 +51,9 @@ public:
 
     friend polynomial operator+(const polynomial& first, const polynomial& second);
     friend polynomial operator-(const polynomial& first, const polynomial& second);
+    friend polynomial operator*(const polynomial& first, const polynomial& second);
+    friend polynomial operator/(const polynomial& first, const polynomial& second);
+    friend polynomial operator%(const polynomial& first, const polynomial& second);
 
 private:
     void remove_null_terms();

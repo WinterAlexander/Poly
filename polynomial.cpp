@@ -38,21 +38,23 @@ std::string poly::polynomial::to_string() const
         else
             ss << (terms[i] < 0 ? " - " : " + ");
 
+        float absVal = std::abs(terms[i]);
+
         if(i == 0)
-            ss << terms[i];
+            ss << absVal;
         else if(i == 1)
         {
-            if(terms[i] == 1)
+            if(absVal == 1)
                 ss << "x";
             else
-                ss << terms[i] << "x";
+                ss << absVal << "x";
         }
         else
         {
-            if(terms[i] == 1)
+            if(absVal == 1)
                 ss << "x^" << i;
             else
-                ss << terms[i] << "x^" << i;
+                ss << absVal << "x^" << i;
         }
 
     }
@@ -85,6 +87,22 @@ poly::polynomial poly::operator-(const poly::polynomial& first, const poly::poly
 {
     return first + -second;
 }
+
+poly::polynomial poly::operator*(const poly::polynomial& first, const poly::polynomial& second)
+{
+    return poly::polynomial();
+}
+
+poly::polynomial poly::operator/(const poly::polynomial& first, const poly::polynomial& second)
+{
+    return poly::polynomial();
+}
+
+poly::polynomial poly::operator%(const poly::polynomial& first, const poly::polynomial& second)
+{
+    return poly::polynomial();
+}
+
 
 std::ostream& poly::operator<<(std::ostream& os, const poly::polynomial& poly)
 {

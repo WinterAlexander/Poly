@@ -1,12 +1,12 @@
-#include <iostream>
+#include "gtest/googletest/include/gtest/gtest.h"
 
-#include "polynomial.h"
-
-int main()
+int main(int argc, char** argv)
 {
-    poly::polynomial poly0(5.0);
-    poly::polynomial poly1(1, 3.6f);
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
 
-    std::cout << (poly0 + poly1) << " Degree: " << poly0.degree() << std::endl;
-    return 0;
+TEST(polynomial, test_add)
+{
+    ASSERT_EQ(1, 1);
 }
