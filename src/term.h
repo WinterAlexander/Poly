@@ -41,6 +41,15 @@ public:
 
     term operator-() const;
 
+    bool operator==(const term& rhs) const;
+
+    bool operator!=(const term& rhs) const;
+
+    bool operator<(const term& rhs) const;
+    bool operator>(const term& rhs) const;
+    bool operator<=(const term& rhs) const;
+    bool operator>=(const term& rhs) const;
+
     friend polynomial operator+(const term& first, const term& second);
     friend polynomial operator-(const term& first, const term& second);
     friend term operator*(const term& first, const term& second);

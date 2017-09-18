@@ -44,6 +44,40 @@ poly::term poly::term::operator-() const
     return poly::term(-_value, _degree);
 }
 
+bool poly::term::operator<(const poly::term& rhs) const
+{
+    if (_degree < rhs._degree)
+        return true;
+    if(_degree > rhs._degree)
+        return false;
+    return _value < rhs._value;
+}
+
+bool poly::term::operator>(const poly::term& rhs) const
+{
+    return rhs < *this;
+}
+
+bool poly::term::operator<=(const poly::term& rhs) const
+{
+    return !(rhs < *this);
+}
+
+bool poly::term::operator>=(const poly::term& rhs) const
+{
+    return !(*this < rhs);
+}
+
+bool poly::term::operator==(const poly::term& rhs) const
+{
+    return _value == rhs._value && _degree == rhs._degree;
+}
+
+bool poly::term::operator!=(const poly::term& rhs) const
+{
+    return !(rhs == *this);
+}
+
 poly::polynomial poly::operator+(const poly::term& first, const poly::term& second)
 {
     return poly::polynomial(first) += poly::polynomial(second);

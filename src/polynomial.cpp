@@ -26,7 +26,7 @@ poly::polynomial::polynomial(std::initializer_list<float> terms)
 {
     this->terms.resize(terms.size());
 
-    for(degree_t i = 0; i < terms.size(); i++)
+    for(degree_t i = 0; i < static_cast<degree_t>(terms.size()); i++)
         this->terms[i] = poly::term(*(terms.end() - i - 1), i);
 
     remove_null_terms();
@@ -42,7 +42,7 @@ poly::polynomial::polynomial(std::initializer_list<poly::term> terms)
 
 void poly::polynomial::ensure_valid()
 {
-    for(degree_t i = 0; i < terms.size(); i++)
+    for(degree_t i = 0; i < static_cast<degree_t>(terms.size()); i++)
         if(i != terms[i].degree())
             throw poly::invalid_term_order();
 }
@@ -129,6 +129,16 @@ poly::quotient poly::operator/(const polynomial& dividend, const polynomial& div
     }
 
     return { result, remainder };
+}
+
+bool poly::polynomial::operator==(const poly::polynomial& rhs) const
+{
+    return terms == rhs.terms;
+}
+
+bool poly::polynomial::operator!=(const poly::polynomial& rhs) const
+{
+    return !(rhs == *this);
 }
 
 std::string poly::polynomial::to_string() const

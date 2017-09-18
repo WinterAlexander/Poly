@@ -32,7 +32,6 @@ class poly::polynomial final
     std::vector<poly::term> terms;
 
 public:
-
     polynomial();
     polynomial(poly::term term);
     polynomial(std::initializer_list<float> terms);
@@ -64,6 +63,9 @@ public:
         return *this -= polynomial(subtrahend);
     }
 
+    bool operator==(const polynomial& rhs) const;
+    bool operator!=(const polynomial& rhs) const;
+    
     friend polynomial operator+(const polynomial& augend, const polynomial& addend);
     friend polynomial operator-(const polynomial& minuend, const polynomial& subtrahend);
     friend polynomial operator*(const polynomial& multiplicand, const polynomial& multiplier);
