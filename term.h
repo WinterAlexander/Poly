@@ -7,6 +7,8 @@
 
 
 #include <cstddef>
+#include "poly_type.h"
+#include <string>
 
 namespace poly {
     class term;
@@ -18,19 +20,22 @@ namespace poly {
     term operator/(const term& first, const term& second);
 }
 
-class poly::term final
+class poly::term
 {
-    float _value = 0;
-    std::size_t _degree = 0;
+    value_t _value = 0;
+    degree_t _degree = 0;
 
 public:
-    term(float value, std::size_t degree);
+    term() = default;
+    term(value_t value, degree_t degree);
 
-    inline float value() const {
+    std::string to_string() const;
+
+    inline value_t value() const {
         return _value;
     }
 
-    inline std::size_t degree() const {
+    inline degree_t degree() const {
         return _degree;
     }
 

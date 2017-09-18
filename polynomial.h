@@ -19,11 +19,12 @@ namespace poly {
 
     std::ostream& operator<<(std::ostream& os, const polynomial& poly);
 
-    polynomial operator+(const polynomial& first, const polynomial& second);
-    polynomial operator-(const polynomial& first, const polynomial& second);
-    polynomial operator*(const polynomial& first, const polynomial& second);
-    polynomial operator/(const polynomial& first, const polynomial& second);
-    polynomial operator%(const polynomial& first, const polynomial& second);
+    polynomial operator+(const polynomial& augend, const polynomial& addend);
+    polynomial operator-(const polynomial& minuend, const polynomial& subtrahend);
+    polynomial operator*(const polynomial& multiplicand, const polynomial& multiplier);
+
+    typedef std::pair<polynomial, polynomial> quotient;
+    quotient operator/(const polynomial& dividend, const polynomial& divisor);
 }
 
 class poly::polynomial final
@@ -31,6 +32,7 @@ class poly::polynomial final
     std::vector<poly::term> terms;
 
 public:
+
     polynomial();
     polynomial(poly::term term);
     polynomial(std::initializer_list<float> terms);
@@ -38,22 +40,37 @@ public:
 
     std::string to_string() const;
 
-    std::size_t degree() const;
+    degree_t degree() const;
+
+    poly::term operator[](degree_t index) const;
+
+    const poly::term& highest() const;
 
     polynomial operator-() const;
 
-    inline polynomial& operator+=(const polynomial& other) {
-        *this = *this + other;
-        return *this;
+    inline polynomial& operator+=(const polynomial& addend) {
+        return *this = *this + addend;
     }
 
-    friend polynomial operator+(const polynomial& first, const polynomial& second);
-    friend polynomial operator-(const polynomial& first, const polynomial& second);
-    friend polynomial operator*(const polynomial& first, const polynomial& second);
-    friend polynomial operator/(const polynomial& first, const polynomial& second);
-    friend polynomial operator%(const polynomial& first, const polynomial& second);
+    inline polynomial& operator-=(const polynomial& subtrahend) {
+        return *this = *this - subtrahend;
+    }
+
+    inline polynomial& operator+=(const term& addend) {
+        return *this += polynomial(addend);
+    }
+
+    inline polynomial& operator-=(const term& subtrahend) {
+        return *this -= polynomial(subtrahend);
+    }
+
+    friend polynomial operator+(const polynomial& augend, const polynomial& addend);
+    friend polynomial operator-(const polynomial& minuend, const polynomial& subtrahend);
+    friend polynomial operator*(const polynomial& multiplicand, const polynomial& multiplier);
+    friend quotient operator/(const polynomial& dividend, const polynomial& divisor);
 
 private:
+    void ensure_valid();
     void remove_null_terms();
 };
 
