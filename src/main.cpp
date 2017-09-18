@@ -1,6 +1,4 @@
-//#include "gtest/googletest/include/gtest/gtest.h"
-
-#include "polynomial.h"
+#include "../src/polynomial.h"
 
 using namespace poly;
 
@@ -15,14 +13,4 @@ int main(int argc, char** argv)
 
     std::cout << "Result: " << result.first << std::endl;
     std::cout << "Remainder: " << result.second << std::endl;
-
-    //::testing::InitGoogleTest(&argc, argv);
-    //return RUN_ALL_TESTS();
 }
-
-/*
-TEST(polynomial, test_add)
-{
-    ASSERT_EQ(1, 1);
-}
- */
