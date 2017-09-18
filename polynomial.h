@@ -31,11 +31,10 @@ class poly::polynomial final
     std::vector<poly::term> terms;
 
 public:
-    polynomial(poly::term singleTerm);
+    polynomial();
+    polynomial(poly::term term);
     polynomial(std::initializer_list<float> terms);
     polynomial(std::initializer_list<poly::term> terms);
-
-    polynomial(const std::vector<term>& terms);
 
     std::string to_string() const;
 

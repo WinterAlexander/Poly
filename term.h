@@ -7,10 +7,10 @@
 
 
 #include <cstddef>
-#include "polynomial.h"
 
 namespace poly {
     class term;
+    class polynomial;
 
     polynomial operator+(const term& first, const term& second);
     polynomial operator-(const term& first, const term& second);
@@ -20,13 +20,19 @@ namespace poly {
 
 class poly::term final
 {
-public:
-    const float value;
-    const std::size_t degree;
+    float _value = 0;
+    std::size_t _degree = 0;
 
-    term() = delete;
-    term(const term& copy) = default;
+public:
     term(float value, std::size_t degree);
+
+    inline float value() const {
+        return _value;
+    }
+
+    inline std::size_t degree() const {
+        return _degree;
+    }
 
     term operator-() const;
 

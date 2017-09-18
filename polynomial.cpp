@@ -4,10 +4,15 @@
 
 #include "polynomial.h"
 
-poly::polynomial::polynomial(poly::term singleTerm)
+poly::polynomial::polynomial()
 {
-    terms.resize(singleTerm.degree + 1);
-    terms[singleTerm.degree] = singleTerm;
+    terms.push_back(poly::term());
+}
+
+poly::polynomial::polynomial(poly::term term)
+{
+    terms.resize(term.degree + 1);
+    terms[term.degree] = term;
 }
 
 poly::polynomial::polynomial(std::initializer_list<float> terms)
@@ -18,7 +23,7 @@ poly::polynomial::polynomial(std::initializer_list<float> terms)
     }
 }
 
-poly::polynomial::polynomial(const std::vector<poly::term>& terms)
+poly::polynomial::polynomial(std::initializer_list<poly::term> terms)
     : terms(terms)
 {
     remove_null_terms();
@@ -42,7 +47,7 @@ poly::polynomial poly::polynomial::operator-() const
 
 size_t poly::polynomial::degree() const
 {
-    return terms.size(); //assumes vector is cleaned up
+    return terms.size() - 1; //assumes vector is cleaned up
 }
 
 poly::polynomial poly::operator+(const poly::polynomial& first, const poly::polynomial& second)
