@@ -78,24 +78,24 @@ bool poly::term::operator!=(const poly::term& rhs) const
     return !(rhs == *this);
 }
 
-poly::polynomial poly::operator+(const poly::term& first, const poly::term& second)
+poly::polynomial poly::term::operator+(const poly::term& second) const
 {
-    return poly::polynomial(first) += poly::polynomial(second);
+    return poly::polynomial(*this) += poly::polynomial(second);
 }
 
-poly::polynomial poly::operator-(const poly::term& first, const poly::term& second)
+poly::polynomial poly::term::operator-(const poly::term& second) const
 {
-    return poly::polynomial(first) -= poly::polynomial(second);
+    return poly::polynomial(*this) -= poly::polynomial(second);
 }
 
-poly::term poly::operator*(const poly::term& first, const poly::term& second)
+poly::term poly::term::operator*(const poly::term& second) const
 {
-    return poly::term(first._value * second._value, first._degree + second._degree);
+    return poly::term(this->_value * second._value, this->_degree + second._degree);
 }
 
-poly::term poly::operator/(const poly::term& first, const poly::term& second)
+poly::term poly::term::operator/(const poly::term& second) const
 {
-    return poly::term(first._value / second._value, first._degree - second._degree);
+    return poly::term(this->_value / second._value, this->_degree - second._degree);
 }
 
 std::ostream& ::poly::operator<<(std::ostream& os, const poly::term& term)

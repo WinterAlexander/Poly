@@ -18,13 +18,6 @@ namespace poly {
     class polynomial;
 
     std::ostream& operator<<(std::ostream& os, const polynomial& poly);
-
-    polynomial operator+(const polynomial& augend, const polynomial& addend);
-    polynomial operator-(const polynomial& minuend, const polynomial& subtrahend);
-    polynomial operator*(const polynomial& multiplicand, const polynomial& multiplier);
-
-    typedef std::pair<polynomial, polynomial> quotient;
-    quotient operator/(const polynomial& dividend, const polynomial& divisor);
 }
 
 class poly::polynomial final
@@ -65,10 +58,13 @@ public:
     bool operator!=(const polynomial& rhs) const;
 
     polynomial operator-() const;
-    friend polynomial operator+(const polynomial& augend, const polynomial& addend);
-    friend polynomial operator-(const polynomial& minuend, const polynomial& subtrahend);
-    friend polynomial operator*(const polynomial& multiplicand, const polynomial& multiplier);
-    friend quotient operator/(const polynomial& dividend, const polynomial& divisor);
+
+    polynomial operator+(const polynomial& addend) const;
+    polynomial operator-(const polynomial& subtrahend) const;
+    polynomial operator*(const polynomial& multiplier) const;
+
+    typedef std::pair<polynomial, polynomial> quotient;
+    quotient operator/(const polynomial& divisor) const;
 
 private:
     void ensure_valid();

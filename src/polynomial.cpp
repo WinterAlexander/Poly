@@ -94,40 +94,40 @@ poly::polynomial poly::polynomial::operator-() const
     return other;
 }
 
-poly::polynomial poly::operator+(const poly::polynomial& first, const poly::polynomial& second)
+poly::polynomial poly::polynomial::operator+(const poly::polynomial& second) const
 {
     polynomial result;
 
-    degree_t size = std::max(first.degree(), second.degree());
+    degree_t size = std::max(this->degree(), second.degree());
     result.terms.resize(static_cast<std::size_t>(size) + 1);
 
     for(degree_t i = 0; i <= size; i++)
-        result.terms[i] = poly::term(first[i].value() + second[i].value(), i);
+        result.terms[i] = poly::term((*this)[i].value() + second[i].value(), i);
 
     result.remove_null_terms();
 
     return result;
 }
 
-poly::polynomial poly::operator-(const poly::polynomial& first, const poly::polynomial& second)
+poly::polynomial poly::polynomial::operator-(const poly::polynomial& second) const
 {
-    return first + -second;
+    return *this + -second;
 }
 
-poly::polynomial poly::operator*(const poly::polynomial& first, const poly::polynomial& second)
+poly::polynomial poly::polynomial::operator*(const poly::polynomial& second) const
 {
     poly::polynomial result;
 
-    for(poly::term a : first.terms)
+    for(poly::term a : this->terms)
         for(poly::term b : second.terms)
             result += a * b;
 
     return result;
 }
 
-poly::quotient poly::operator/(const polynomial& dividend, const polynomial& divisor)
+poly::polynomial::quotient poly::polynomial::operator/(const polynomial& divisor) const
 {
-    polynomial remainder = dividend;
+    polynomial remainder = *this;
     polynomial result;
 
     const term divisorTerm = divisor.highest();

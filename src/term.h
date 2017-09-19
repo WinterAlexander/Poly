@@ -14,11 +14,6 @@ namespace poly {
     class term;
     class polynomial;
     std::ostream& operator<<(std::ostream& os, const term& term);
-
-    polynomial operator+(const term& first, const term& second);
-    polynomial operator-(const term& first, const term& second);
-    term operator*(const term& first, const term& second);
-    term operator/(const term& first, const term& second);
 }
 
 class poly::term final
@@ -51,10 +46,10 @@ public:
     bool operator<=(const term& rhs) const;
     bool operator>=(const term& rhs) const;
 
-    friend polynomial operator+(const term& first, const term& second);
-    friend polynomial operator-(const term& first, const term& second);
-    friend term operator*(const term& first, const term& second);
-    friend term operator/(const term& first, const term& second);
+    polynomial operator+(const term& second) const;
+    polynomial operator-(const term& second) const;
+    term operator*(const term& second) const;
+    term operator/(const term& second) const;
 };
 
 
