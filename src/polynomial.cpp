@@ -4,6 +4,7 @@
 
 #include "polynomial.h"
 #include "poly_except.h"
+#include <cmath>
 
 poly::polynomial::polynomial()
 {
