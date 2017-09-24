@@ -27,11 +27,11 @@ public:
 
     std::string to_string() const;
 
-    inline value_t value() const {
+    value_t value() const {
         return _value;
     }
 
-    inline degree_t degree() const {
+    degree_t degree() const {
         return _degree;
     }
 

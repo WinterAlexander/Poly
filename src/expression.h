@@ -6,6 +6,7 @@
 #define POLY_NUMBER_H
 
 #include <string>
+#include <typeinfo>
 
 namespace poly {
     class expression;
@@ -33,13 +34,13 @@ public:
     bool is_constant() const;
 
     template<typename T>
-    inline bool instance_of() {
-        return dynamic_cast<T>(content);
+    bool instance_of() const {
+        return dynamic_cast<T*>(content) != nullptr;
     }
 
     template<typename T>
-    inline const T& as() {
-        T* ptr = dynamic_cast<T>(content);
+    const T& as() const {
+        T* ptr = dynamic_cast<T*>(content);
 
         if(!ptr)
             throw poly::invalid_expr_cast_except<T>();
@@ -76,14 +77,14 @@ public:
 };
 
 template<typename T>
-class poly::invalid_expr_cast_except final : public std::logic_error
-{
+class poly::invalid_expr_cast_except final //: public std::logic_error
+{/*
 public:
-    inline invalid_expr_cast_except()
-        : std::logic_error("Could not cast expression to type" + typeid(T).name())
+    invalid_expr_cast_except()
+        : logic_error(std::string("Could not cast expression to type") + typeid(T).name())
     {
 
-    }
+    }*/
 };
 
 #endif //POLY_NUMBER_H

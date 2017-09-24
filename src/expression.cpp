@@ -3,9 +3,12 @@
 //
 
 #include "expression.h"
-#include "simple_operations.h"
+#include "subtraction.h"
 #include "constant.h"
 #include "exponentiation.h"
+#include "addition.h"
+#include "multiplication.h"
+#include "division.h"
 
 poly::expression::expression(poly::expr_content* content)
     : content(content)
@@ -84,7 +87,7 @@ std::string poly::expression::to_string() const
 
 std::string poly::expression::to_mathjax() const
 {
-    return "$$" + content->to_mathjax() + "$$";
+    return content->to_mathjax();
 }
 
 std::ostream& poly::operator<<(std::ostream& os, const poly::expression& expr)

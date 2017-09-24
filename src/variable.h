@@ -26,6 +26,7 @@ public:
     expr_content* clone() const override;
 
     std::string to_string() const override;
+    std::string to_mathjax() const override;
 };
 
 class poly::incalculable_expr_except final : std::logic_error

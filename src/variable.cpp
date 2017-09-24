@@ -29,3 +29,8 @@ std::string poly::variable::to_string() const
 {
     return name;
 }
+
+std::string poly::variable::to_mathjax() const
+{
+    return to_string();
+}

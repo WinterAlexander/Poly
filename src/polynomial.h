@@ -38,19 +38,19 @@ public:
 
     poly::term operator[](degree_t index) const;
 
-    inline polynomial& operator+=(const polynomial& addend) {
+    polynomial& operator+=(const polynomial& addend) {
         return *this = *this + addend;
     }
 
-    inline polynomial& operator-=(const polynomial& subtrahend) {
+    polynomial& operator-=(const polynomial& subtrahend) {
         return *this = *this - subtrahend;
     }
 
-    inline polynomial& operator+=(const term& addend) {
+    polynomial& operator+=(const term& addend) {
         return *this += polynomial(addend);
     }
 
-    inline polynomial& operator-=(const term& subtrahend) {
+    polynomial& operator-=(const term& subtrahend) {
         return *this -= polynomial(subtrahend);
     }
 

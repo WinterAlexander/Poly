@@ -4,6 +4,8 @@
 
 #include <cmath>
 #include "exponentiation.h"
+#include "division.h"
+#include "constant.h"
 
 poly::exponentiation::exponentiation(const poly::expression& base, const poly::expression& exponent)
     : base(base), exponent(exponent)
@@ -66,10 +68,20 @@ std::string poly::exponentiation::to_string() const
 
 std::string poly::exponentiation::to_mathjax() const
 {
+    std::string baseStr;
+
+    if(base.instance_of<poly::division>())
+        baseStr = "(" + base.to_mathjax() + ")";
+    else
+        baseStr = base.to_mathjax();
+
     if(exponent.instance_of<poly::division>())
     {
+        const poly::division& di = exponent.as<poly::division>();
 
+        if(di.get_divisor().instance_of<poly::integer>())
+            return "\\sqrt[" + di.get_divisor().to_mathjax() + "]{{" + baseStr + "}^{" + di.get_dividend().to_mathjax() + "}}";
     }
 
-    return "{" + base.to_string() + "}^{" + exponent.to_string() + "}";
+    return "{" + baseStr + "}^{" + exponent.to_mathjax() + "}";
 }
