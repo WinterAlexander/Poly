@@ -2,7 +2,7 @@
 // Created by Alexander Winter on 2017-09-24.
 //
 
-#include "division.h"
+#include "expr/arithmetic/division.h"
 
 poly::division::division(const poly::expression& dividend, const poly::expression& divisor)
         : dividend(dividend), divisor(divisor)

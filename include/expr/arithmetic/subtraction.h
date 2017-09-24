@@ -6,7 +6,7 @@
 #define POLY_SUM_H
 
 #include <bits/unique_ptr.h>
-#include "expression.h"
+#include "../expression.h"
 
 namespace poly {
     class subtraction;

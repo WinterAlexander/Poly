@@ -2,7 +2,7 @@
 // Created by Alexander Winter on 2017-09-24.
 //
 
-#include "addition.h"
+#include "expr/arithmetic/addition.h"
 
 poly::addition::addition(const poly::expression& augend, const poly::expression& addend)
         : augend(augend), addend(addend)

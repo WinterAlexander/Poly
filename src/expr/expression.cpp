@@ -2,13 +2,13 @@
 // Created by Alexander Winter on 2017-09-19.
 //
 
-#include "expression.h"
-#include "subtraction.h"
-#include "constant.h"
-#include "exponentiation.h"
-#include "addition.h"
-#include "multiplication.h"
-#include "division.h"
+#include "expr/expression.h"
+#include "expr/arithmetic/subtraction.h"
+#include "expr/constant.h"
+#include "expr/exponentiation.h"
+#include "expr/arithmetic/addition.h"
+#include "expr/arithmetic/multiplication.h"
+#include "expr/arithmetic/division.h"
 
 poly::expression::expression(poly::expr_content* content)
     : content(content)

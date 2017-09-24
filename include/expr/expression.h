@@ -7,6 +7,7 @@
 
 #include <string>
 #include <typeinfo>
+#include <stdexcept>
 
 namespace poly {
     class expression;
@@ -77,14 +78,15 @@ public:
 };
 
 template<typename T>
-class poly::invalid_expr_cast_except final //: public std::logic_error
-{/*
+class poly::invalid_expr_cast_except final : public std::logic_error
+{
 public:
     invalid_expr_cast_except()
         : logic_error(std::string("Could not cast expression to type") + typeid(T).name())
     {
 
-    }*/
+    }
 };
+
 
 #endif //POLY_NUMBER_H

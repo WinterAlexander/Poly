@@ -12,7 +12,7 @@ namespace poly {
     class division_by_higher_degree;
 }
 
-class poly::invalid_term_order : std::logic_error
+class poly::invalid_term_order : public std::logic_error
 {
 public:
     invalid_term_order()
@@ -22,7 +22,7 @@ public:
     }
 };
 
-class poly::division_by_higher_degree : std::logic_error
+class poly::division_by_higher_degree : public std::logic_error
 {
 public:
     division_by_higher_degree(const std::string& __arg)

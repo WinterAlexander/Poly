@@ -2,7 +2,7 @@
 // Created by Alexander Winter on 2017-09-24.
 //
 
-#include "multiplication.h"
+#include "expr/arithmetic/multiplication.h"
 
 
 poly::multiplication::multiplication(const poly::expression& multiplicand, const poly::expression& multiplier)

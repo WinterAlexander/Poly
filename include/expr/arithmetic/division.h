@@ -5,7 +5,7 @@
 #ifndef POLY_DIVISION_H
 #define POLY_DIVISION_H
 
-#include <expression.h>
+#include "../expression.h"
 
 namespace poly {
     class division;

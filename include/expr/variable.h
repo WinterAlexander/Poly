@@ -29,7 +29,7 @@ public:
     std::string to_mathjax() const override;
 };
 
-class poly::incalculable_expr_except final : std::logic_error
+class poly::incalculable_expr_except final : public std::logic_error
 {
 public:
     incalculable_expr_except(const std::string& var_name)

@@ -4,7 +4,7 @@
 
 
 #include <gtest/gtest.h>
-#include "expression.h"
+#include "expr/expression.h"
 
 TEST(expression, simple_operation_construction)
 {

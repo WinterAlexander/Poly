@@ -2,7 +2,7 @@
 // Created by Alexander Winter on 2017-09-24.
 //
 
-#include "variable.h"
+#include "expr/variable.h"
 
 poly::variable::variable(std::string name)
     : name(name)

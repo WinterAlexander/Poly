@@ -5,7 +5,7 @@
 #ifndef POLY_ADDITION_H
 #define POLY_ADDITION_H
 
-#include "expression.h"
+#include "../expression.h"
 
 namespace poly {
     class addition;

@@ -9,15 +9,22 @@ endif()
 
 set(CMAKE_CXX_STANDARD 17)
 
-include_directories(src)
-file(GLOB SOURCE_FILES ${PROJECT_SOURCE_DIR}/src/*.cpp ${PROJECT_SOURCE_DIR}/src/*.h)
+include_directories(include)
+file(GLOB SOURCE_FILES
+        ${PROJECT_SOURCE_DIR}/src/*.cpp
+        ${PROJECT_SOURCE_DIR}/include/*.h
+        ${PROJECT_SOURCE_DIR}/src/*/*.cpp
+        ${PROJECT_SOURCE_DIR}/include/*/*.h
+        ${PROJECT_SOURCE_DIR}/src/*/*/*.cpp
+        ${PROJECT_SOURCE_DIR}/include/*/*/*.h)
+
 add_library(Poly_lib ${SOURCE_FILES})
 add_executable(Poly ${SOURCE_FILES})
 
 
 add_subdirectory(gtest)
 enable_testing()
-include_directories(${GTEST_INCLUDE_DIRS} src)
+include_directories(${GTEST_INCLUDE_DIRS} include)
 
 
 file(GLOB TEST_SRC_FILES ${PROJECT_SOURCE_DIR}/tests/*.cpp)

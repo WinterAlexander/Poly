@@ -3,9 +3,9 @@
 //
 
 #include <cmath>
-#include "exponentiation.h"
-#include "division.h"
-#include "constant.h"
+#include "expr/exponentiation.h"
+#include "expr/arithmetic/division.h"
+#include "expr/constant.h"
 
 poly::exponentiation::exponentiation(const poly::expression& base, const poly::expression& exponent)
     : base(base), exponent(exponent)

@@ -2,7 +2,7 @@
 // Created by Alexander Winter on 2017-09-24.
 //
 
-#include "constant.h"
+#include "expr/constant.h"
 
 poly::integer::integer(int value)
         : _value(value)

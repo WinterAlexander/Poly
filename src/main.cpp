@@ -1,4 +1,4 @@
-#include "../src/polynomial.h"
+#include "polynomial.h"
 
 using namespace poly;
 
