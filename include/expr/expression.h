@@ -16,6 +16,8 @@ namespace poly {
     template<typename T>
     class invalid_expr_cast_except;
 
+    class cannot_derivate_except;
+
     std::ostream& operator<<(std::ostream& os, const expression& expr);
 }
 
@@ -27,12 +29,15 @@ class poly::expression final
 
 public:
     expression(int value);
+    expression(double value);
     expression(const expression& other);
 
     ~expression();
 
     double value() const;
     bool is_constant() const;
+
+    expression derivative() const;
 
     template<typename T>
     bool instance_of() const {
@@ -50,6 +55,7 @@ public:
 
     expression& operator=(const expression& other);
     expression& operator=(int value);
+    expression& operator=(double value);
 
     expression operator+(const expression& addend) const;
     expression operator-(const expression& subtrahend) const;
@@ -69,6 +75,18 @@ public:
 
     std::string to_string() const;
     std::string to_mathjax() const;
+
+    friend expression sin(const expression& argument);
+    friend expression cos(const expression& argument);
+    friend expression tan(const expression& argument);
+
+    friend expression abs(const expression& value);
+
+    friend expression ln(const expression& exponent);
+    friend expression log(const expression& base, const expression& exponent);
+
+    friend expression get_e();
+    friend expression get_pi();
 };
 
 class poly::expr_content
@@ -79,6 +97,8 @@ public:
 
     virtual double value() const = 0;
     virtual bool is_constant() const = 0;
+
+    virtual poly::expression derivative() const = 0;
 
     virtual poly::expr_content* clone() const = 0;
 
@@ -92,6 +112,16 @@ class poly::invalid_expr_cast_except final : public std::logic_error
 public:
     invalid_expr_cast_except()
         : logic_error(std::string("Could not cast expression to type") + typeid(T).name())
+    {
+
+    }
+};
+
+class poly::cannot_derivate_except final : public std::logic_error
+{
+public:
+    cannot_derivate_except(const std::string& message)
+            : logic_error(message)
     {
 
     }

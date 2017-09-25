@@ -15,3 +15,8 @@ poly::expr_content* poly::tangent::clone() const
 {
     return new poly::tangent(argument);
 }
+
+poly::expression poly::tangent::derivate() const
+{
+    return argument.derivative() / (poly::cos(argument) ^ 2);
+}

@@ -6,7 +6,7 @@
 #define POLY_SUM_H
 
 #include <bits/unique_ptr.h>
-#include "../expression.h"
+#include "expr/expression.h"
 
 namespace poly {
     class subtraction;
@@ -26,12 +26,16 @@ public:
         return minuend.is_constant() && subtrahend.is_constant();
     }
 
+    expression derivative() const override;
+
     expr_content* clone() const override {
         return new poly::subtraction(minuend, subtrahend);
     }
 
     std::string to_string() const override;
     std::string to_mathjax() const override;
+
+
 };
 
 

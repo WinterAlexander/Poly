@@ -5,14 +5,18 @@
 #include <cmath>
 #include "expr/functions/cosine.h"
 
-cosine::cosine(const poly::expression& argument)
+poly::cosine::cosine(const poly::expression& argument)
         : trigonometric_function(argument, "cos", std::cos)
 {
 
 }
 
-
-poly::expr_content* cosine::clone() const
+poly::expr_content* poly::cosine::clone() const
 {
     return new poly::cosine(argument);
+}
+
+poly::expression poly::cosine::derivate() const
+{
+    return -poly::sin(argument) * argument.derivative();
 }

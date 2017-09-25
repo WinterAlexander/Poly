@@ -11,10 +11,12 @@ namespace poly {
     class cosine;
 }
 
-class cosine final : poly::trigonometric_function
+class poly::cosine final : public poly::trigonometric_function
 {
 public:
     cosine(const poly::expression& argument);
+
+    expression derivate() const override;
 
     poly::expr_content* clone() const override;
 };

@@ -9,6 +9,8 @@
 
 namespace poly {
     class absolute_value;
+
+    expression abs(const expression& value);
 }
 
 class poly::absolute_value final : public expr_content
@@ -20,6 +22,8 @@ public:
 
     double value() const override;
     bool is_constant() const override;
+
+    expression derivative() const override;
 
     expr_content* clone() const override;
 

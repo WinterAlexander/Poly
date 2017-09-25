@@ -16,6 +16,8 @@ class poly::sine final : public poly::trigonometric_function
 public:
     sine(const expression& argument);
 
+    expression derivate() const override;
+
     expr_content* clone() const override;
 };
 

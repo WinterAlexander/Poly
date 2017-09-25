@@ -26,3 +26,8 @@ std::string poly::subtraction::to_mathjax() const
 {
     return "(" + minuend.to_mathjax() + "-" + subtrahend.to_mathjax() + ")";
 }
+
+poly::expression poly::subtraction::derivative() const
+{
+    return minuend.derivative() - subtrahend.derivative();
+}

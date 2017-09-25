@@ -23,6 +23,8 @@ public:
 
     bool is_constant() const;
 
+    expression derivative() const override;
+
     expr_content* clone() const override {
         return new poly::multiplication(multiplicand, multiplier);
     }

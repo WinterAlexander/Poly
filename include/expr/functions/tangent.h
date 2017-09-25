@@ -11,12 +11,13 @@ namespace poly {
     class tangent;
 }
 
-class poly::tangent final : poly::trigonometric_function
+class poly::tangent final : public poly::trigonometric_function
 {
 public:
     tangent(const expression& argument);
 
-private:
+    expression derivate() const override;
+
     expr_content* clone() const override;
 };
 

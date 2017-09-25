@@ -56,3 +56,8 @@ std::string poly::multiplication::to_mathjax() const
 {
     return "(" + multiplicand.to_mathjax() + "\\cdot " + multiplier.to_mathjax() + ")";
 }
+
+poly::expression poly::multiplication::derivative() const
+{
+    return multiplicand.derivative() * multiplier + multiplicand * multiplier.derivative();
+}

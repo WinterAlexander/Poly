@@ -5,7 +5,7 @@
 #include <cmath>
 #include "expr/exponentiation.h"
 #include "expr/arithmetic/division.h"
-#include "expr/constant.h"
+#include "expr/constant/integer.h"
 
 poly::exponentiation::exponentiation(const poly::expression& base, const poly::expression& exponent)
     : base(base), exponent(exponent)
@@ -84,4 +84,14 @@ std::string poly::exponentiation::to_mathjax() const
     }
 
     return "{" + baseStr + "}^{" + exponent.to_mathjax() + "}";
+}
+
+poly::expression poly::exponentiation::derivative() const
+{
+    if(base.is_constant())
+    {
+
+    }
+
+    return nullptr;
 }

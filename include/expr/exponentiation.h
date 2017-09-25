@@ -22,6 +22,8 @@ public:
     double value() const override;
     bool is_constant() const override;
 
+    expression derivative() const override;
+
     expr_content* clone() const override;
 
     std::string to_string() const override;

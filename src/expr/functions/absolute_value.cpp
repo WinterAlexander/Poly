@@ -35,3 +35,13 @@ std::string poly::absolute_value::to_mathjax() const
 {
     return "\\lvert\\," + argument.to_string() + "\\,\\lvert ";
 }
+
+poly::expression poly::absolute_value::derivative() const
+{
+    throw poly::cannot_derivate_except("absolute value");
+}
+
+poly::expression abs(const poly::expression& value)
+{
+    return poly::expression(new poly::absolute_value(value));
+}

@@ -4,7 +4,8 @@
 
 #include <cmath>
 #include "expr/functions/logarithm.h"
-#include "expr/constant.h"
+#include "expr/constant/integer.h"
+#include "expr/constant/e.h"
 
 
 poly::logarithm::logarithm(const poly::expression& base, const poly::expression& antilogarithm)
@@ -19,6 +20,13 @@ double poly::logarithm::value() const
 bool poly::logarithm::is_constant() const
 {
     return base.is_constant() && antilogarithm.is_constant();
+}
+
+poly::expression poly::logarithm::derivative() const
+{
+    if(base.is_constant())
+        return antilogarithm.derivative() / (antilogarithm * poly::ln(base));
+    throw poly::cannot_derivate_except("base is not constant");
 }
 
 poly::expr_content* poly::logarithm::clone() const
@@ -54,4 +62,14 @@ const poly::expression& poly::logarithm::get_base() const
 const poly::expression& poly::logarithm::get_antilogarithm() const
 {
     return antilogarithm;
+}
+
+poly::expression poly::ln(const poly::expression& exponent)
+{
+    return poly::expression(new poly::logarithm(poly::E, exponent));
+}
+
+poly::expression poly::log(const poly::expression& base, const poly::expression& exponent)
+{
+    return poly::expression(new poly::logarithm(base, exponent));
 }

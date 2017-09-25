@@ -24,3 +24,8 @@ std::string poly::division::to_mathjax() const
 {
     return "\\frac{" + dividend.to_mathjax() + "}{" + divisor.to_mathjax() + "}";
 }
+
+poly::expression poly::division::derivative() const
+{
+    return (dividend.derivative() * divisor - dividend * divisor.derivative()) / (divisor ^ 2);
+}

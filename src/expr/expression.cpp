@@ -4,7 +4,7 @@
 
 #include "expr/expression.h"
 #include "expr/arithmetic/subtraction.h"
-#include "expr/constant.h"
+#include "expr/constant/integer.h"
 #include "expr/exponentiation.h"
 #include "expr/arithmetic/addition.h"
 #include "expr/arithmetic/multiplication.h"
@@ -17,6 +17,11 @@ poly::expression::expression(poly::expr_content* content)
 }
 
 poly::expression::expression(int value)
+{
+    *this = value;
+}
+
+poly::expression::expression(double value)
 {
     *this = value;
 }
@@ -45,6 +50,13 @@ poly::expression& poly::expression::operator=(int value)
     return *this;
 }
 
+poly::expression& poly::expression::operator=(double value)
+{
+    delete content;
+    content = new poly::integer((int)value); //TODO detect fraction
+    return *this;
+}
+
 double poly::expression::value() const
 {
     return content->value();
@@ -53,6 +65,11 @@ double poly::expression::value() const
 bool poly::expression::is_constant() const
 {
     return content->is_constant();
+}
+
+poly::expression poly::expression::derivative() const
+{
+    return content->derivative();
 }
 
 poly::expression poly::expression::operator+(const poly::expression& addend) const

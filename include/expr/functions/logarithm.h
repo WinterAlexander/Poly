@@ -9,6 +9,9 @@
 
 namespace poly {
     class logarithm;
+
+    expression ln(const expression& exponent);
+    expression log(const expression& base, const expression& exponent);
 }
 
 class poly::logarithm final : public poly::expr_content
@@ -22,6 +25,8 @@ public:
 
     double value() const override;
     bool is_constant() const override;
+
+    expression derivative() const override;
 
     expr_content* clone() const override;
 

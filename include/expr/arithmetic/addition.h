@@ -25,6 +25,8 @@ public:
         return augend.is_constant() && addend.is_constant();
     }
 
+    expression derivative() const override;
+
     expr_content* clone() const override {
         return new poly::addition(augend, addend);
     }
