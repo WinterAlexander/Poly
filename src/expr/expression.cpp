@@ -67,9 +67,9 @@ bool poly::expression::is_constant() const
     return content->is_constant();
 }
 
-poly::expression poly::expression::derivative() const
+poly::expression poly::expression::derivative(poly::variable var) const
 {
-    return content->derivative();
+    return content->derivative(var);
 }
 
 poly::expression poly::expression::operator+(const poly::expression& addend) const
@@ -126,6 +126,17 @@ poly::expression& poly::expression::operator^=(const poly::expression& exponent)
 {
     return *this = *this ^ exponent;
 }
+
+bool poly::expression::operator==(const poly::expression& other) const
+{
+    return false;//*content == *other.content;
+}
+
+bool poly::expression::operator!=(const poly::expression& other) const
+{
+    return !(other == *this);
+}
+
 
 std::string poly::expression::to_string() const
 {

@@ -2,8 +2,8 @@
 // Created by Alexander Winter on 2017-09-24.
 //
 
-#ifndef POLY_CONSTANT_H
-#define POLY_CONSTANT_H
+#ifndef POLY_INTEGER_H
+#define POLY_INTEGER_H
 
 #include <cmath>
 #include "constant.h"
@@ -18,17 +18,13 @@ class poly::integer final : public poly::constant
 public:
     integer(int value);
 
-    double value() const override {
-        return _value;
-    }
+    double value() const override;
 
-    poly::expr_content* clone() const override {
-        return new poly::integer(_value);
-    }
+    poly::expr_content* clone() const override;
 
     std::string to_string() const override;
     std::string to_mathjax() const override;
 };
 
 
-#endif //POLY_CONSTANT_H
+#endif //POLY_INTEGER_H

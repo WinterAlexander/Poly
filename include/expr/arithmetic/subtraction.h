@@ -7,6 +7,8 @@
 
 #include <bits/unique_ptr.h>
 #include "expr/expression.h"
+#include "expr/variable.h"
+#include "expr/expr_content.h"
 
 namespace poly {
     class subtraction;
@@ -26,7 +28,7 @@ public:
         return minuend.is_constant() && subtrahend.is_constant();
     }
 
-    expression derivative() const override;
+    poly::expression derivative(poly::variable var) const override;
 
     expr_content* clone() const override {
         return new poly::subtraction(minuend, subtrahend);

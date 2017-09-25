@@ -6,6 +6,8 @@
 #define POLY_POWER_H
 
 #include "expression.h"
+#include "expr_content.h"
+#include "variable.h"
 
 namespace poly {
     class exponentiation;
@@ -22,7 +24,7 @@ public:
     double value() const override;
     bool is_constant() const override;
 
-    expression derivative() const override;
+    poly::expression derivative(poly::variable var) const override;
 
     expr_content* clone() const override;
 

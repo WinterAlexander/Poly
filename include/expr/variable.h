@@ -6,11 +6,14 @@
 #define POLY_VARIABLE_H
 
 #include <stdexcept>
-#include "expression.h"
+#include "expr_content.h"
 
 namespace poly {
     class variable;
-    class incalculable_expr_except;
+    class expression;
+
+    expression var(char name);
+    expression var(const std::string& name);
 }
 
 class poly::variable final : public poly::expr_content
@@ -24,20 +27,12 @@ public:
     double value() const override;
     bool is_constant() const override;
 
+    poly::expression derivative(poly::variable var) const override;
+
     expr_content* clone() const override;
 
     std::string to_string() const override;
     std::string to_mathjax() const override;
-};
-
-class poly::incalculable_expr_except final : public std::logic_error
-{
-public:
-    incalculable_expr_except(const std::string& var_name)
-            : logic_error("Could not calculate expression with variable: " + var_name)
-    {
-
-    }
 };
 
 

@@ -6,6 +6,7 @@
 #include "expr/exponentiation.h"
 #include "expr/arithmetic/division.h"
 #include "expr/constant/integer.h"
+#include "expr/functions/logarithm.h"
 
 poly::exponentiation::exponentiation(const poly::expression& base, const poly::expression& exponent)
     : base(base), exponent(exponent)
@@ -86,12 +87,20 @@ std::string poly::exponentiation::to_mathjax() const
     return "{" + baseStr + "}^{" + exponent.to_mathjax() + "}";
 }
 
-poly::expression poly::exponentiation::derivative() const
+poly::expression poly::exponentiation::derivative(poly::variable var) const
 {
     if(base.is_constant())
-    {
+        return (base ^ exponent) * poly::ln(base) * exponent.derivative(var);
 
+    if(exponent.is_constant())
+    {
+        if(exponent == 1)
+            return base.derivative(var);
+        else if(exponent == 0)
+            return 0;
+
+        return exponent * (base ^ (exponent - 1)) * base.derivative(var);
     }
 
-    return nullptr;
+    throw poly::cannot_derivate_except("Both base and exponent are variables");
 }

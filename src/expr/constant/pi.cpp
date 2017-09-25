@@ -5,27 +5,22 @@
 #include <cmath>
 #include "expr/constant/pi.h"
 
-double value() const
+double poly::pi::value() const
 {
     return M_PI;
 }
 
-bool is_constant() const
-{
-    return true;
-}
-
-poly::expr_content* clone() const
+poly::expr_content* poly::pi::clone() const
 {
     return new poly::pi();
 }
 
-std::string to_string() const
+std::string poly::pi::to_string() const
 {
     return "PI";
 }
 
-std::string to_mathjax() const
+std::string poly::pi::to_mathjax() const
 {
     return "\\pi ";
 }

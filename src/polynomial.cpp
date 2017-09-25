@@ -45,7 +45,7 @@ void poly::polynomial::ensure_valid()
 {
     for(degree_t i = 0; i < static_cast<degree_t>(terms.size()); i++)
         if(i != terms[i].degree())
-            throw poly::invalid_term_order();
+            throw poly::invalid_term_order_except();
 }
 
 void poly::polynomial::remove_null_terms()

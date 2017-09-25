@@ -22,10 +22,10 @@ bool poly::logarithm::is_constant() const
     return base.is_constant() && antilogarithm.is_constant();
 }
 
-poly::expression poly::logarithm::derivative() const
+poly::expression poly::logarithm::derivative(poly::variable var) const
 {
     if(base.is_constant())
-        return antilogarithm.derivative() / (antilogarithm * poly::ln(base));
+        return antilogarithm.derivative(var) / (antilogarithm * poly::ln(base));
     throw poly::cannot_derivate_except("base is not constant");
 }
 

@@ -16,7 +16,7 @@ poly::expr_content* poly::cosine::clone() const
     return new poly::cosine(argument);
 }
 
-poly::expression poly::cosine::derivate() const
+poly::expression poly::cosine::derivative(poly::variable var) const
 {
-    return -poly::sin(argument) * argument.derivative();
+    return -poly::sin(argument) * argument.derivative(var);
 }

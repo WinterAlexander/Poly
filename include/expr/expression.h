@@ -8,15 +8,13 @@
 #include <string>
 #include <typeinfo>
 #include <stdexcept>
+#include "poly_except.h"
 
 namespace poly {
     class expression;
+
+    class variable;
     class expr_content;
-
-    template<typename T>
-    class invalid_expr_cast_except;
-
-    class cannot_derivate_except;
 
     std::ostream& operator<<(std::ostream& os, const expression& expr);
 }
@@ -37,7 +35,7 @@ public:
     double value() const;
     bool is_constant() const;
 
-    expression derivative() const;
+    expression derivative(poly::variable var) const;
 
     template<typename T>
     bool instance_of() const {
@@ -73,6 +71,9 @@ public:
 
     expression& operator^=(const expression& exponent);
 
+    bool operator==(const expression& other) const;
+    bool operator!=(const expression& other) const;
+
     std::string to_string() const;
     std::string to_mathjax() const;
 
@@ -87,45 +88,11 @@ public:
 
     friend expression get_e();
     friend expression get_pi();
+
+    friend expression var(char name);
+    friend expression var(const std::string& name);
 };
 
-class poly::expr_content
-{
-
-public:
-    virtual ~expr_content() = default;
-
-    virtual double value() const = 0;
-    virtual bool is_constant() const = 0;
-
-    virtual poly::expression derivative() const = 0;
-
-    virtual poly::expr_content* clone() const = 0;
-
-    virtual std::string to_string() const = 0;
-    virtual std::string to_mathjax() const = 0;
-};
-
-template<typename T>
-class poly::invalid_expr_cast_except final : public std::logic_error
-{
-public:
-    invalid_expr_cast_except()
-        : logic_error(std::string("Could not cast expression to type") + typeid(T).name())
-    {
-
-    }
-};
-
-class poly::cannot_derivate_except final : public std::logic_error
-{
-public:
-    cannot_derivate_except(const std::string& message)
-            : logic_error(message)
-    {
-
-    }
-};
 
 
 #endif //POLY_NUMBER_H

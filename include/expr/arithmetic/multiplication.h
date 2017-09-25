@@ -5,7 +5,9 @@
 #ifndef POLY_MULTIPLICATION_H
 #define POLY_MULTIPLICATION_H
 
-#include "../expression.h"
+#include "expr/expression.h"
+#include "expr/variable.h"
+#include "expr/expr_content.h"
 
 namespace poly {
     class multiplication;
@@ -23,7 +25,7 @@ public:
 
     bool is_constant() const;
 
-    expression derivative() const override;
+    poly::expression derivative(poly::variable var) const override;
 
     expr_content* clone() const override {
         return new poly::multiplication(multiplicand, multiplier);

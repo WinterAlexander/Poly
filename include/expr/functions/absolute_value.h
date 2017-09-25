@@ -5,6 +5,7 @@
 #ifndef POLY_ABSOLUTE_VALUE_H
 #define POLY_ABSOLUTE_VALUE_H
 
+#include <expr/variable.h>
 #include "../expression.h"
 
 namespace poly {
@@ -23,7 +24,7 @@ public:
     double value() const override;
     bool is_constant() const override;
 
-    expression derivative() const override;
+    poly::expression derivative(poly::variable var) const override;
 
     expr_content* clone() const override;
 

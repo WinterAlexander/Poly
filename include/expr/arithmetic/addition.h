@@ -5,7 +5,9 @@
 #ifndef POLY_ADDITION_H
 #define POLY_ADDITION_H
 
-#include "../expression.h"
+#include "expr/expression.h"
+#include "expr/variable.h"
+#include "expr/expr_content.h"
 
 namespace poly {
     class addition;
@@ -25,7 +27,7 @@ public:
         return augend.is_constant() && addend.is_constant();
     }
 
-    expression derivative() const override;
+    poly::expression derivative(poly::variable var) const override;
 
     expr_content* clone() const override {
         return new poly::addition(augend, addend);

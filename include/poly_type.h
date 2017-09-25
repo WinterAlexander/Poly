@@ -6,6 +6,7 @@
 #define POLY_POLY_TYPE_H
 
 #include <utility>
+#include <stdexcept>
 
 namespace poly {
     typedef float value_t;

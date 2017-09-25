@@ -3,6 +3,7 @@
 //
 
 #include "expr/variable.h"
+#include "expr/expression.h"
 
 poly::variable::variable(const std::string& name)
         : name(name)
@@ -26,6 +27,13 @@ bool poly::variable::is_constant() const
     return false;
 }
 
+poly::expression poly::variable::derivative(poly::variable var) const
+{
+    if(var.name == this->name)
+        return 1;
+    throw poly::cannot_derivate_except("Trying to find the derivative of a variable with another");
+}
+
 poly::expr_content* poly::variable::clone() const
 {
     return new poly::variable(name);
@@ -39,4 +47,14 @@ std::string poly::variable::to_string() const
 std::string poly::variable::to_mathjax() const
 {
     return to_string();
+}
+
+poly::expression poly::var(char name)
+{
+    return poly::expression(new poly::variable(name));
+}
+
+poly::expression poly::var(const std::string& name)
+{
+    return poly::expression(new poly::variable(name));
 }

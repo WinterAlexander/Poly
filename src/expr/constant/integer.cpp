@@ -10,6 +10,16 @@ poly::integer::integer(int value)
 
 }
 
+double poly::integer::value() const
+{
+    return _value;
+}
+
+poly::expr_content* poly::integer::clone() const
+{
+    return new poly::integer(_value);
+}
+
 std::string poly::integer::to_string() const
 {
     return std::to_string(_value);

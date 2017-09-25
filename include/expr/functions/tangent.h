@@ -16,7 +16,7 @@ class poly::tangent final : public poly::trigonometric_function
 public:
     tangent(const expression& argument);
 
-    expression derivate() const override;
+    expression derivative(poly::variable var) const override;
 
     expr_content* clone() const override;
 };

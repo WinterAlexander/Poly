@@ -4,22 +4,22 @@
 
 #include "expr/constant/e.h"
 
-double value() const
+double poly::e::value() const
 {
     return std::exp(1);
 }
 
-poly::expr_content* clone() const
+poly::expr_content* poly::e::clone() const
 {
     return new poly::e();
 }
 
-std::string to_string() const
+std::string poly::e::to_string() const
 {
     return "e";
 }
 
-std::string to_mathjax() const
+std::string poly::e::to_mathjax() const
 {
     return to_string();
 }
