@@ -5,7 +5,7 @@
 #ifndef POLY_TRIGONOMETRIC_FUNCTION_H
 #define POLY_TRIGONOMETRIC_FUNCTION_H
 
-#include "../expression.h"
+#include "expr/expression.h"
 
 namespace poly {
     class trigonometric_function;

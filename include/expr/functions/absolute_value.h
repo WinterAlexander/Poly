@@ -24,7 +24,7 @@ public:
     double value() const override;
     bool is_constant() const override;
 
-    poly::expression derivative(poly::variable var) const override;
+    poly::expression derivative(const variable &var) const override;
 
     expr_content* clone() const override;
 

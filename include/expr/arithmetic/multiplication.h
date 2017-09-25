@@ -25,7 +25,7 @@ public:
 
     bool is_constant() const;
 
-    poly::expression derivative(poly::variable var) const override;
+    poly::expression derivative(const variable &var) const override;
 
     expr_content* clone() const override {
         return new poly::multiplication(multiplicand, multiplier);

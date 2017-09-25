@@ -36,7 +36,7 @@ std::string poly::absolute_value::to_mathjax() const
     return "\\lvert\\," + argument.to_string() + "\\,\\lvert ";
 }
 
-poly::expression poly::absolute_value::derivative(poly::variable var) const
+poly::expression poly::absolute_value::derivative(const variable &var) const
 {
     return ((argument ^ 2) ^ (1 / 2)).derivative(var);
 }

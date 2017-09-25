@@ -27,7 +27,7 @@ public:
         return dividend.is_constant() && divisor.is_constant();
     }
 
-    poly::expression derivative(poly::variable var) const override;
+    poly::expression derivative(const variable &var) const override;
 
     expr_content* clone() const override {
         return new poly::division(dividend, divisor);

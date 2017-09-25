@@ -67,7 +67,7 @@ bool poly::expression::is_constant() const
     return content->is_constant();
 }
 
-poly::expression poly::expression::derivative(poly::variable var) const
+poly::expression poly::expression::derivative(const variable &var) const
 {
     return content->derivative(var);
 }

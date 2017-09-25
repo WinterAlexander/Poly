@@ -27,7 +27,7 @@ std::string poly::subtraction::to_mathjax() const
     return "(" + minuend.to_mathjax() + "-" + subtrahend.to_mathjax() + ")";
 }
 
-poly::expression poly::subtraction::derivative(poly::variable var) const
+poly::expression poly::subtraction::derivative(const variable &var) const
 {
     return minuend.derivative(var) - subtrahend.derivative(var);
 }

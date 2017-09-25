@@ -28,7 +28,7 @@ public:
         return minuend.is_constant() && subtrahend.is_constant();
     }
 
-    poly::expression derivative(poly::variable var) const override;
+    poly::expression derivative(const variable &var) const override;
 
     expr_content* clone() const override {
         return new poly::subtraction(minuend, subtrahend);

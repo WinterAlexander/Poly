@@ -9,7 +9,7 @@ bool poly::constant::is_constant() const
     return true;
 }
 
-poly::expression poly::constant::derivative(poly::variable var) const
+poly::expression poly::constant::derivative(const variable &var) const
 {
     return 0;
 }

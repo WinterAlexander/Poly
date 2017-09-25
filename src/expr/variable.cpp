@@ -27,7 +27,7 @@ bool poly::variable::is_constant() const
     return false;
 }
 
-poly::expression poly::variable::derivative(poly::variable var) const
+poly::expression poly::variable::derivative(const variable &var) const
 {
     if(var.name == this->name)
         return 1;

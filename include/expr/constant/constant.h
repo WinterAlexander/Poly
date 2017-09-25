@@ -18,7 +18,7 @@ class poly::constant : public expr_content
 {
 public:
     bool is_constant() const override;
-    poly::expression derivative(poly::variable var) const override;
+    poly::expression derivative(const variable &var) const override;
 };
 
 

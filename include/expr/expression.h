@@ -35,7 +35,7 @@ public:
     double value() const;
     bool is_constant() const;
 
-    expression derivative(poly::variable var) const;
+    expression derivative(const variable& var) const;
 
     template<typename T>
     bool instance_of() const {

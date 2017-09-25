@@ -87,7 +87,7 @@ std::string poly::exponentiation::to_mathjax() const
     return "{" + baseStr + "}^{" + exponent.to_mathjax() + "}";
 }
 
-poly::expression poly::exponentiation::derivative(poly::variable var) const
+poly::expression poly::exponentiation::derivative(const variable &var) const
 {
     if(base.is_constant())
         return (base ^ exponent) * poly::ln(base) * exponent.derivative(var);

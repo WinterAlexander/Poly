@@ -25,7 +25,7 @@ std::string poly::addition::to_mathjax() const
     return "(" + augend.to_mathjax() + "+" + addend.to_mathjax() + ")";
 }
 
-poly::expression poly::addition::derivative(poly::variable var) const
+poly::expression poly::addition::derivative(const variable &var) const
 {
     return augend.derivative(var) + addend.derivative(var);
 }

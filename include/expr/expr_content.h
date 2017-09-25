@@ -21,7 +21,7 @@ public:
     virtual double value() const = 0;
     virtual bool is_constant() const = 0;
 
-    virtual poly::expression derivative(poly::variable var) const = 0;
+    virtual poly::expression derivative(const variable &var) const = 0;
 
     virtual poly::expr_content* clone() const = 0;
 
