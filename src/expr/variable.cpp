@@ -4,8 +4,14 @@
 
 #include "expr/variable.h"
 
-poly::variable::variable(std::string name)
-    : name(name)
+poly::variable::variable(const std::string& name)
+        : name(name)
+{
+
+}
+
+poly::variable::variable(char name)
+        : name(std::string(1, name))
 {
 
 }

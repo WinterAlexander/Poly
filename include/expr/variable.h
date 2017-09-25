@@ -18,7 +18,8 @@ class poly::variable final : public poly::expr_content
     std::string name;
 
 public:
-    variable(std::string name);
+    variable(char name);
+    variable(const std::string& name);
 
     double value() const override;
     bool is_constant() const override;

@@ -58,6 +58,15 @@ public:
 
     expression operator^(const expression& exponent) const;
 
+    expression operator-();
+
+    expression& operator+=(const expression& addend);
+    expression& operator-=(const expression& subtrahend);
+    expression& operator*=(const expression& multiplier);
+    expression& operator/=(const expression& divisor);
+
+    expression& operator^=(const expression& exponent);
+
     std::string to_string() const;
     std::string to_mathjax() const;
 };

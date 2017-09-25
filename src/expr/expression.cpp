@@ -80,6 +80,36 @@ poly::expression poly::expression::operator^(const poly::expression& exponent) c
     return poly::expression(new poly::exponentiation(*this, exponent));
 }
 
+poly::expression poly::expression::operator-()
+{
+    return poly::expression(new poly::multiplication(*this, -1));
+}
+
+poly::expression& poly::expression::operator+=(const poly::expression& addend)
+{
+    return *this = *this + addend;
+}
+
+poly::expression& poly::expression::operator-=(const poly::expression& subtrahend)
+{
+    return *this = *this - subtrahend;
+}
+
+poly::expression& poly::expression::operator*=(const poly::expression& multiplier)
+{
+    return *this = *this * multiplier;
+}
+
+poly::expression& poly::expression::operator/=(const poly::expression& divisor)
+{
+    return *this = *this / divisor;
+}
+
+poly::expression& poly::expression::operator^=(const poly::expression& exponent)
+{
+    return *this = *this ^ exponent;
+}
+
 std::string poly::expression::to_string() const
 {
     return content->to_string();
