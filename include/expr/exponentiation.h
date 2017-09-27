@@ -11,6 +11,8 @@
 
 namespace poly {
     class exponentiation;
+
+    expression sqrt(const expression& radicant);
 }
 
 class poly::exponentiation final : public poly::expr_content

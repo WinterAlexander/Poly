@@ -9,6 +9,8 @@
 
 namespace poly {
     class tangent;
+
+    expression tan(const expression& argument);
 }
 
 class poly::tangent final : public poly::trigonometric_function

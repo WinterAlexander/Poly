@@ -17,6 +17,12 @@ namespace poly {
     class expr_content;
 
     std::ostream& operator<<(std::ostream& os, const expression& expr);
+
+    expression operator+(int augend, const expression& addend);
+    expression operator-(int minuend, const expression& subtrahend);
+    expression operator*(int multiplicand, const expression& multiplier);
+    expression operator/(int dividend, const expression& divisor);
+    expression operator^(int base, const expression& exponent);
 }
 
 class poly::expression final
@@ -83,6 +89,8 @@ public:
 
     friend expression abs(const expression& value);
 
+    friend expression sqrt(const expression& radicant);
+
     friend expression ln(const expression& exponent);
     friend expression log(const expression& base, const expression& exponent);
 
@@ -91,6 +99,10 @@ public:
 
     friend expression var(char name);
     friend expression var(const std::string& name);
+
+    friend expression asin(const expression& argument);
+    friend expression acos(const expression& argument);
+    friend expression atan(const expression& argument);
 };
 
 

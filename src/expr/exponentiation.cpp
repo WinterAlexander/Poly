@@ -104,3 +104,8 @@ poly::expression poly::exponentiation::derivative(const variable &var) const
 
     throw poly::cannot_derivate_except("Both base and exponent are variables");
 }
+
+poly::expression poly::sqrt(const poly::expression& radicant)
+{
+    return radicant ^ (1 / 2);
+}

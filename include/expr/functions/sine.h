@@ -9,6 +9,7 @@
 
 namespace poly {
     class sine;
+    expression sin(const expression& argument);
 }
 
 class poly::sine final : public poly::trigonometric_function

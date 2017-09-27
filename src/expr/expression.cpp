@@ -153,3 +153,28 @@ std::ostream& poly::operator<<(std::ostream& os, const poly::expression& expr)
     os << expr.to_string();
     return os;
 }
+
+poly::expression poly::operator+(int augend, const poly::expression& addend)
+{
+    return poly::expression(augend) + addend;
+}
+
+poly::expression poly::operator-(int minuend, const poly::expression& subtrahend)
+{
+    return poly::expression(minuend) - subtrahend;
+}
+
+poly::expression poly::operator*(int multiplicand, const poly::expression& multiplier)
+{
+    return poly::expression(multiplicand) * multiplier;
+}
+
+poly::expression poly::operator/(int dividend, const poly::expression& divisor)
+{
+    return poly::expression(dividend) / divisor;
+}
+
+poly::expression poly::operator^(int base, const poly::expression& exponent)
+{
+    return poly::expression(base) ^ exponent;
+}

@@ -10,10 +10,6 @@
 
 namespace poly {
     class trigonometric_function;
-
-    expression sin(const expression& argument);
-    expression cos(const expression& argument);
-    expression tan(const expression& argument);
 }
 
 class poly::trigonometric_function : public expr_content

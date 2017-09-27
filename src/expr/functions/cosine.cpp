@@ -4,6 +4,7 @@
 
 #include <cmath>
 #include "expr/functions/cosine.h"
+#include "expr/functions/sine.h"
 
 poly::cosine::cosine(const poly::expression& argument)
         : trigonometric_function(argument, "cos", std::cos)

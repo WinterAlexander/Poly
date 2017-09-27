@@ -4,6 +4,7 @@
 
 #include <cmath>
 #include "expr/functions/tangent.h"
+#include "expr/functions/cosine.h"
 
 poly::tangent::tangent(const poly::expression& argument)
         : trigonometric_function(argument, "tan", std::tan)

@@ -10,6 +10,8 @@
 
 namespace poly {
     class cosine;
+
+    expression cos(const expression& argument);
 }
 
 class poly::cosine final : public poly::trigonometric_function
