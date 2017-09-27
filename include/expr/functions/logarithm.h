@@ -5,7 +5,8 @@
 #ifndef POLY_LOGARITHM_H
 #define POLY_LOGARITHM_H
 
-#include "../expression.h"
+#include "expr/expression.h"
+#include "expr/expr_content.h"
 
 namespace poly {
     class logarithm;
@@ -20,13 +21,12 @@ class poly::logarithm final : public poly::expr_content
     expression antilogarithm;
 
 public:
-
     logarithm(const expression& base, const expression& antilogarithm);
 
     double value() const override;
     bool is_constant() const override;
 
-    poly::expression derivative(const variable &var) const override;
+    poly::expression derivative(const variable& var) const override;
 
     expr_content* clone() const override;
 

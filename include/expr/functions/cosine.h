@@ -6,6 +6,7 @@
 #define POLY_COSINE_H
 
 #include "trigonometric_function.h"
+#include "expr/variable.h"
 
 namespace poly {
     class cosine;
@@ -16,7 +17,7 @@ class poly::cosine final : public poly::trigonometric_function
 public:
     cosine(const poly::expression& argument);
 
-    expression derivative(poly::variable var) const override;
+    expression derivative(const poly::variable& var) const override;
 
     poly::expr_content* clone() const override;
 };

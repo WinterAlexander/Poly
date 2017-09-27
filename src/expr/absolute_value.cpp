@@ -2,7 +2,7 @@
 // Created by Alexander Winter on 2017-09-24.
 //
 
-#include "expr/functions/absolute_value.h"
+#include "expr/absolute_value.h"
 #include <cmath>
 
 poly::absolute_value::absolute_value(const poly::expression& argument)
@@ -41,7 +41,7 @@ poly::expression poly::absolute_value::derivative(const variable &var) const
     return ((argument ^ 2) ^ (1 / 2)).derivative(var);
 }
 
-poly::expression abs(const poly::expression& value)
+poly::expression poly::abs(const poly::expression& value)
 {
     return poly::expression(new poly::absolute_value(value));
 }

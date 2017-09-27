@@ -6,7 +6,7 @@
 #define POLY_ABSOLUTE_VALUE_H
 
 #include <expr/variable.h>
-#include "../expression.h"
+#include "expression.h"
 
 namespace poly {
     class absolute_value;

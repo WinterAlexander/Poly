@@ -6,6 +6,7 @@
 #define POLY_TRIGONOMETRIC_FUNCTION_H
 
 #include "expr/expression.h"
+#include "expr/expr_content.h"
 
 namespace poly {
     class trigonometric_function;
