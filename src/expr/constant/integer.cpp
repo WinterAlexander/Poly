@@ -5,27 +5,32 @@
 #include "expr/constant/integer.h"
 
 poly::integer::integer(int value)
-        : _value(value)
+        : value(value)
 {
 
 }
 
-double poly::integer::value() const
+double poly::integer::resolve() const
 {
-    return _value;
+    return value;
 }
 
 poly::expr_content* poly::integer::clone() const
 {
-    return new poly::integer(_value);
+    return new poly::integer(value);
 }
 
 std::string poly::integer::to_string() const
 {
-    return std::to_string(_value);
+    return std::to_string(value);
 }
 
 std::string poly::integer::to_mathjax() const
 {
     return to_string();
+}
+
+int poly::integer::get_value() const
+{
+    return value;
 }

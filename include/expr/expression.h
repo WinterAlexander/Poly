@@ -28,20 +28,28 @@ namespace poly {
 class poly::expression final
 {
     expr_content* content = nullptr;
+    const std::type_info* expr_type;
 
-    explicit expression(expr_content* content);
+    template<typename T>
+    explicit expression(T* content)
+            : content(dynamic_cast<expr_content*>(content)), expr_type(&typeid(T))
+    {
+        if(!this->content)
+            throw std::invalid_argument("type is not an expression");
+    }
 
 public:
     expression(int value);
-    expression(double value);
+    expression(float value);
     expression(const expression& other);
 
     ~expression();
 
-    double value() const;
+    double resolve() const;
     bool is_constant() const;
 
     expression derivative(const variable& var) const;
+    expression simplified() const;
 
     template<typename T>
     bool instance_of() const {
@@ -57,9 +65,13 @@ public:
         return *(ptr);
     }
 
+    const std::type_info& type() const {
+        return *expr_type;
+    }
+
     expression& operator=(const expression& other);
     expression& operator=(int value);
-    expression& operator=(double value);
+    expression& operator=(float value);
 
     expression operator+(const expression& addend) const;
     expression operator-(const expression& subtrahend) const;

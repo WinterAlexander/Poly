@@ -4,7 +4,7 @@
 
 #include "expr/constant/e.h"
 
-double poly::e::value() const
+double poly::e::resolve() const
 {
     return std::exp(1);
 }

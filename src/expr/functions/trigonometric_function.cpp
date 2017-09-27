@@ -13,9 +13,9 @@ poly::trigonometric_function::trigonometric_function(const poly::expression& arg
 
 }
 
-double poly::trigonometric_function::value() const
+double poly::trigonometric_function::resolve() const
 {
-    return function(argument.value());
+    return function(argument.resolve());
 }
 
 bool poly::trigonometric_function::is_constant() const

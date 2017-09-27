@@ -24,7 +24,7 @@ public:
     variable(char name);
     variable(const std::string& name);
 
-    double value() const override;
+    double resolve() const override;
     bool is_constant() const override;
 
     poly::expression derivative(const variable &var) const override;

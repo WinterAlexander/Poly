@@ -10,18 +10,13 @@
 #include "expr/arithmetic/multiplication.h"
 #include "expr/arithmetic/division.h"
 
-poly::expression::expression(poly::expr_content* content)
-    : content(content)
-{
-
-}
 
 poly::expression::expression(int value)
 {
     *this = value;
 }
 
-poly::expression::expression(double value)
+poly::expression::expression(float value)
 {
     *this = value;
 }
@@ -40,6 +35,7 @@ poly::expression& poly::expression::operator=(const poly::expression& other)
 {
     delete content;
     content = other.content->clone();
+    expr_type = other.expr_type;
     return *this;
 }
 
@@ -47,19 +43,29 @@ poly::expression& poly::expression::operator=(int value)
 {
     delete content;
     content = new poly::integer(value);
+    expr_type = &typeid(poly::integer);
     return *this;
 }
 
-poly::expression& poly::expression::operator=(double value)
+poly::expression& poly::expression::operator=(float value)
 {
-    delete content;
-    content = new poly::integer((int)value); //TODO detect fraction
-    return *this;
+    throw std::logic_error("Not implemented");
+    /*
+    float numerator = value;
+    float denominator = 1;
+
+    while(numerator != (int)numerator)
+    {
+        numerator *= 2;
+        denominator *= 2;
+    }
+
+    return *this = ((poly::expression((int)numerator) / (int)denominator)).simplified();*/
 }
 
-double poly::expression::value() const
+double poly::expression::resolve() const
 {
-    return content->value();
+    return content->resolve();
 }
 
 bool poly::expression::is_constant() const
@@ -70,6 +76,11 @@ bool poly::expression::is_constant() const
 poly::expression poly::expression::derivative(const variable &var) const
 {
     return content->derivative(var);
+}
+
+poly::expression poly::expression::simplified() const
+{
+    return content->simplified(*this);
 }
 
 poly::expression poly::expression::operator+(const poly::expression& addend) const

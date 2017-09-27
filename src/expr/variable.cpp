@@ -17,7 +17,7 @@ poly::variable::variable(char name)
 
 }
 
-double poly::variable::value() const
+double poly::variable::resolve() const
 {
     throw poly::incalculable_expr_except(name);
 }

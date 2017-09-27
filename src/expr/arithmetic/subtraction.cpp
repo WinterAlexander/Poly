@@ -12,9 +12,9 @@ poly::subtraction::subtraction(const poly::expression& minuend, const poly::expr
 
 }
 
-double poly::subtraction::value() const
+double poly::subtraction::resolve() const
 {
-    return minuend.value() - subtrahend.value();
+    return minuend.resolve() - subtrahend.resolve();
 }
 
 std::string poly::subtraction::to_string() const

@@ -23,7 +23,7 @@ class poly::exponentiation final : public poly::expr_content
 public:
     exponentiation(const poly::expression& base, const poly::expression& exponent);
 
-    double value() const override;
+    double resolve() const override;
     bool is_constant() const override;
 
     poly::expression derivative(const variable &var) const override;

@@ -12,9 +12,9 @@ poly::logarithm::logarithm(const poly::expression& base, const poly::expression&
         : base(base), antilogarithm(antilogarithm)
 {}
 
-double poly::logarithm::value() const
+double poly::logarithm::resolve() const
 {
-    return std::log10(antilogarithm.value()) / std::log10(base.value());
+    return std::log10(antilogarithm.resolve()) / std::log10(base.resolve());
 }
 
 bool poly::logarithm::is_constant() const

@@ -21,7 +21,7 @@ class poly::absolute_value final : public expr_content
 public:
     absolute_value(const expression& argument);
 
-    double value() const override;
+    double resolve() const override;
     bool is_constant() const override;
 
     poly::expression derivative(const variable &var) const override;

@@ -11,9 +11,9 @@ poly::absolute_value::absolute_value(const poly::expression& argument)
 
 }
 
-double poly::absolute_value::value() const
+double poly::absolute_value::resolve() const
 {
-    return std::abs(argument.value());
+    return std::abs(argument.resolve());
 }
 
 bool poly::absolute_value::is_constant() const

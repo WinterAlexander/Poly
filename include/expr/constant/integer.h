@@ -14,16 +14,18 @@ namespace poly {
 
 class poly::integer final : public poly::constant
 {
-    int _value;
+    int value;
 public:
     integer(int value);
 
-    double value() const override;
+    double resolve() const override;
 
     poly::expr_content* clone() const override;
 
     std::string to_string() const override;
     std::string to_mathjax() const override;
+
+    int get_value() const;
 };
 
 

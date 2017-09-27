@@ -21,7 +21,7 @@ class poly::addition final : public poly::expr_content
 public:
     addition(const poly::expression& augend, const poly::expression& addend);
 
-    double value() const override;
+    double resolve() const override;
 
     bool is_constant() const override {
         return augend.is_constant() && addend.is_constant();

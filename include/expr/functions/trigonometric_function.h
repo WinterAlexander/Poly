@@ -22,7 +22,7 @@ protected:
 public:
     trigonometric_function(const expression& argument, const std::string& func_name, double(&function)(double));
 
-    double value() const override;
+    double resolve() const override;
     bool is_constant() const override;
 
     std::string to_string() const override;

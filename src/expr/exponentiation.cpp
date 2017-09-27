@@ -14,13 +14,13 @@ poly::exponentiation::exponentiation(const poly::expression& base, const poly::e
 
 }
 
-double poly::exponentiation::value() const
+double poly::exponentiation::resolve() const
 {
     bool baseSet = false, expSet = false;
     double baseVal, expVal;
     if(exponent.is_constant())
     {
-        expVal = exponent.value();
+        expVal = exponent.resolve();
         expSet = true;
         if(expVal == 0)
             return 1;
@@ -28,7 +28,7 @@ double poly::exponentiation::value() const
 
     if(base.is_constant())
     {
-        baseVal = base.value();
+        baseVal = base.resolve();
         baseSet = true;
         if(baseVal == 1)
             return 1;
@@ -37,10 +37,10 @@ double poly::exponentiation::value() const
     }
 
     if(!baseSet)
-        baseVal = base.value();
+        baseVal = base.resolve();
 
     if(!expSet)
-        expVal = exponent.value();
+        expVal = exponent.resolve();
 
     return std::pow(baseVal, expVal);
 }
@@ -49,7 +49,7 @@ bool poly::exponentiation::is_constant() const
 {
     if(exponent.is_constant())
     {
-        if(exponent.value() == 0)
+        if(exponent.resolve() == 0)
             return true;
         return base.is_constant();
     }

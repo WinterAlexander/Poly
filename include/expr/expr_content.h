@@ -5,6 +5,8 @@
 #ifndef POLY_EXPR_CONTENT_H
 #define POLY_EXPR_CONTENT_H
 
+#include <string>
+
 namespace poly {
     class expr_content;
 
@@ -18,10 +20,11 @@ class poly::expr_content
 public:
     virtual ~expr_content() = default;
 
-    virtual double value() const = 0;
+    virtual double resolve() const = 0;
     virtual bool is_constant() const = 0;
 
     virtual poly::expression derivative(const variable &var) const = 0;
+    virtual poly::expression simplified(const poly::expression& parent) const;
 
     virtual poly::expr_content* clone() const = 0;
 

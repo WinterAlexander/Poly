@@ -21,7 +21,7 @@ class poly::multiplication final : public poly::expr_content
 public:
     multiplication(const poly::expression& multiplicand, const poly::expression& multiplier);
 
-    double value() const override;
+    double resolve() const override;
 
     bool is_constant() const;
 

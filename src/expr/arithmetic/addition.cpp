@@ -15,9 +15,9 @@ std::string poly::addition::to_string() const
     return "(" + augend.to_string() + " + " + addend.to_string() + ")";
 }
 
-double poly::addition::value() const
+double poly::addition::resolve() const
 {
-    return augend.value() + addend.value();
+    return augend.resolve() + addend.resolve();
 }
 
 std::string poly::addition::to_mathjax() const

@@ -22,7 +22,7 @@ class poly::subtraction final : public poly::expr_content
 public:
     subtraction(const poly::expression& minuend, const poly::expression& subtrahend);
 
-    double value() const override;
+    double resolve() const override;
 
     bool is_constant() const override {
         return minuend.is_constant() && subtrahend.is_constant();

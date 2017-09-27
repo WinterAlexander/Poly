@@ -18,7 +18,7 @@ namespace poly {
 class poly::e final : public poly::constant
 {
 public:
-    double value() const override;
+    double resolve() const override;
 
     expr_content* clone() const override;
 

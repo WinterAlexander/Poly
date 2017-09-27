@@ -23,7 +23,7 @@ class poly::logarithm final : public poly::expr_content
 public:
     logarithm(const expression& base, const expression& antilogarithm);
 
-    double value() const override;
+    double resolve() const override;
     bool is_constant() const override;
 
     poly::expression derivative(const variable& var) const override;

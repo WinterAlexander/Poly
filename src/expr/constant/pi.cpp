@@ -5,7 +5,7 @@
 #include <cmath>
 #include "expr/constant/pi.h"
 
-double poly::pi::value() const
+double poly::pi::resolve() const
 {
     return M_PI;
 }

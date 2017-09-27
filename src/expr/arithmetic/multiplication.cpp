@@ -11,40 +11,40 @@ poly::multiplication::multiplication(const poly::expression& multiplicand, const
 
 }
 
-double poly::multiplication::value() const
+double poly::multiplication::resolve() const
 {
     if(multiplicand.is_constant())
     {
-        double val1 = multiplicand.value();
+        double val1 = multiplicand.resolve();
 
         if(val1 == 0)
             return 0;
 
-        return val1 * multiplier.value();
+        return val1 * multiplier.resolve();
     }
 
     if(multiplier.is_constant())
     {
-        double val2 = multiplier.value();
+        double val2 = multiplier.resolve();
 
         if(val2 == 0)
             return 0;
 
-        return multiplicand.value() * val2;
+        return multiplicand.resolve() * val2;
     }
 
-    return multiplicand.value() * multiplier.value();
+    return multiplicand.resolve() * multiplier.resolve();
 }
 
 bool poly::multiplication::is_constant() const {
     if(multiplicand.is_constant())
     {
-        if(multiplicand.value() == 0)
+        if(multiplicand.resolve() == 0)
             return true;
         return multiplier.is_constant();
     }
 
-    return multiplier.is_constant() && multiplier.value() == 0;
+    return multiplier.is_constant() && multiplier.resolve() == 0;
 }
 
 std::string poly::multiplication::to_string() const
